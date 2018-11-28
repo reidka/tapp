@@ -1,13 +1,17 @@
 # frozen_string_literal: true
 
+require_relative '../../../../lib/authentication/authentication'
 module Api::V1
   # Controller for Instructors
   class InstructorsController < ApplicationController
+    include Authentication
     before_action :set_instructor, only: %i[show update destroy]
+    before_action :memes
 
     # GET /instructors
     def index
       @instructors = Instructor.order(:id)
+      # puts session[:utorid]
 
       render json: @instructors
     end
@@ -56,6 +60,11 @@ module Api::V1
       params.permit(
         :email, :first_name, :last_name, :utorid
       )
+    end
+
+    def memes
+      authenticate
+      # puts self.authenticate
     end
   end
 end

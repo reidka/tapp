@@ -4,6 +4,7 @@ module Api::V1
   # Controller for Positions
   class PositionsController < ApplicationController
     before_action :set_position, only: %i[show update destroy]
+    before_action :authenticate
 
     # GET /positions
     def index
@@ -61,5 +62,7 @@ module Api::V1
         :start_date, :end_date
       )
     end
+
+    def authenticate; end
   end
 end
