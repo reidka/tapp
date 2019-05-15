@@ -4,6 +4,7 @@ module Api::V1
   # Controller for Positions
   class PositionsController < ApplicationController
     before_action :set_position, only: %i[show update destroy]
+    before_action :authorize_user
 
     # GET /positions
     def index

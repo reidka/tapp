@@ -4,6 +4,7 @@ module Api::V1
   # Controller for Instructors
   class InstructorsController < ApplicationController
     before_action :set_instructor, only: %i[show update destroy]
+    before_action :authorize_user
 
     # GET /instructors
     def index

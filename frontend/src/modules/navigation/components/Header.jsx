@@ -12,11 +12,11 @@ const CustomNavItem = ({ href, children }) => (
 
 const TappNavItems = () => (
     <Nav>
-        <CustomNavItem href="/tapp/positions">Positions</CustomNavItem>
-        <CustomNavItem href="/tapp/applicants">Applicants by Course</CustomNavItem>
-        <CustomNavItem href="/tapp/assigned">All Assigned</CustomNavItem>
-        <CustomNavItem href="/tapp/unassigned">All Unassigned</CustomNavItem>
-        <CustomNavItem href="/tapp/summary">Summary</CustomNavItem>
+        <CustomNavItem href="/admin/positions">Positions</CustomNavItem>
+        <CustomNavItem href="/admin/applicants">Applicants by Course</CustomNavItem>
+        <CustomNavItem href="/admin/assigned">All Assigned</CustomNavItem>
+        <CustomNavItem href="/admin/unassigned">All Unassigned</CustomNavItem>
+        <CustomNavItem href="/admin/summary">Summary</CustomNavItem>
     </Nav>
 )
 
@@ -28,15 +28,15 @@ class Header extends React.Component {
             <Navbar fixedTop fluid>
                 <Navbar.Header id="app-drop-down">
                     <Navbar.Brand>
-                        <Route path="/tapp" render={() => <Link to="/cp">TAPP</Link>} />
-                        <Route path="/cp" render={() => <Link to="/tapp/positions">CP</Link>} />
+                        <Route path="/admin" render={() => <Link to="/cp">TAPP</Link>} />
+                        <Route path="/cp" render={() => <Link to="/admin/positions">CP</Link>} />
                     </Navbar.Brand>
                 </Navbar.Header>
-                <Route path="/tapp" component={TappNavItems} />
+                <Route path="/admin" component={TappNavItems} />
                 <Route path="/cp" component={CpNavItems} />
                 <Nav pullRight>
                     <NavDropdown eventKey={3} title="Tools" id="tools-dropdown">
-                        <MenuItem href="/tapp/positions/new">New Position</MenuItem>
+                        <MenuItem href="/admin/positions/new">New Position</MenuItem>
                     </NavDropdown>
                 </Nav>
             </Navbar>

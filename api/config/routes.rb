@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 	  resources :offers, only: [:index, :show]
 
       match 'positions/import' => 'positions#import', :via => :post
+      post 'authenticate', to: 'authentication#authenticate'
     end
   end
 

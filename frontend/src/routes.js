@@ -8,6 +8,9 @@ import AllUnassigned from "./modules/all_applicants/components/AllUnassigned"
 import Summary from "./modules/tapp_summary/components/Summary"
 import ApplicationForm from "./modules/application/components/ApplicationForm"
 import PositionsApplied from "./modules/applicants_positions/components/PositionsApplied"
+import MockAuthenticate from "./modules/auth/components/MockAuthenticate"
+import ApplicantView from "./modules/applicant_view/components/ApplicantView"
+import AdminView from "./modules/admin_view/components/AdminView"
 
 export const openRoutes = [
     {
@@ -15,27 +18,38 @@ export const openRoutes = [
         component: RootRedirect
     },
     {
-        path: "/tapp/positions",
+        path: "/authenticate",
+        component: MockAuthenticate
+    }
+]
+
+export const privateRoutes = [
+    {
+        path: "/admin",
+        component: AdminView
+    },
+    {
+        path: "/admin/positions",
         component: Positions
     },
     {
-        path: "/tapp/positions/new",
+        path: "/admin/positions/new",
         component: NewPosition
     },
     {
-        path: "/tapp/applicants",
+        path: "/admin/applicants",
         component: Applicants
     },
     {
-        path: "/tapp/assigned",
+        path: "/admin/assigned",
         component: AllAssigned
     },
     {
-        path: "/tapp/unassigned",
+        path: "/admin/unassigned",
         component: AllUnassigned
     },
     {
-        path: "/tapp/summary",
+        path: "/admin/summary",
         component: Summary
     },
     {
@@ -49,7 +63,9 @@ export const openRoutes = [
     {
         path: "/application/positionApplied",
         component: PositionsApplied
+    },
+    {
+        path: "/applicant",
+        component: ApplicantView
     }
 ]
-
-export const privateRoutes = []
