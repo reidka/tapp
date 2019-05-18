@@ -21,7 +21,7 @@ RSpec.describe Api::V1::ApplicantsController, type: :api do
   # ApplicantsController. Be sure to keep this updated.
   let(:valid_session) { [] }
 
-  describe 'POST /applicants' do
+  describe 'POST new /applicants' do
     context 'with valid params' do
       it 'creates a new Applicant' do
         expect do
@@ -36,13 +36,13 @@ RSpec.describe Api::V1::ApplicantsController, type: :api do
     end
   end
 
-  describe 'PUT /applicants/:id' do
+  describe 'Update /applicants/:id' do
     let(:new_attributes) { { last_name: 'Bobloblaw' } }
 
     context 'when record exists' do
       context 'with valid params' do
         before(:each) do
-          put "/api/v1/applicants/#{applicant.id}", new_attributes, session: valid_session
+          post "/api/v1/applicants", new_attributes, session: valid_session
         end
 
         it 'updates the correct applicant' do
@@ -56,12 +56,7 @@ RSpec.describe Api::V1::ApplicantsController, type: :api do
       end
     end
 
-    context 'when record does not exist' do
-      it 'returns an error message' do
-        put "/api/v1/applicants/#{Applicant.last.id + 1}", new_attributes, session: valid_session
-        expect(json['message']).to eq("Couldn't find Applicant with 'id'=#{Applicant.last.id + 1}")
-      end
-    end
   end
+
 
 end

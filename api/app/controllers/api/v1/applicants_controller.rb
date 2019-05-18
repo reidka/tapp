@@ -7,21 +7,18 @@ module Api::V1
 
       # POST /applicants
       def create
-        @applicant = Applicant.new(applicant_params)
-  
-        if @applicant.save
-          render json: @applicant, status: :created
-        else
-          render json: @applicant.errors, status: :unprocessable_entity
-        end
-      end
-  
-      # PATCH/PUT /applicants/1
-      def update
-        if @applicant.update(applicant_params)
+        # We must determine whether the record already exists
+        if @applicant
+          @applicant.update(applicant_params)
+          puts "hi"
           render json: @applicant
         else
-          render json: @applicant.errors, status: :unprocessable_entity
+          @applicant = Applicant.new(applicant_params)
+          if @applicant.save
+            render json: @applicant, status: :created
+          else
+            render json: @applicant.errors, status: :unprocessable_entity
+          end
         end
       end
   
