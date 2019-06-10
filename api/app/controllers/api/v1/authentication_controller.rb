@@ -3,8 +3,9 @@ module Api::V1
     skip_before_action :authenticate_request
   
     def authenticate
-      logger.info(params[:utorid])
-      command = AuthenticateUser.call(params[:utorid])
+      #logger.info(params[:utorid])
+      arg = request.headers['HTTP_X_FORWARDED_USER'] || params['utorid']
+      command = AuthenticateUser.call(arg)
   
       if command.success?
         render json: command.result

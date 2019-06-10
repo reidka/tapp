@@ -1,5 +1,6 @@
-#! /bin/bash
-bundle exec rails db:migrate
+#! /bin/sh
+echo "RUNNING MIGRATIONS"
+bundle exec rails db:reset
 
 if [[ $? != 0 ]]; then
   echo

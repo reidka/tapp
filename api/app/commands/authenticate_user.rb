@@ -15,6 +15,7 @@ class AuthenticateUser
   
     def user
       user = User.find_by_utorid(utorid) || Applicant.find_by_utorid(utorid)
+      user ||= Applicant.create!({utorid: utorid, email: '', first_name: '', last_name: '', student_number: ''})
       return user if user
   
       errors.add :user_authentication, 'invalid utorid'
